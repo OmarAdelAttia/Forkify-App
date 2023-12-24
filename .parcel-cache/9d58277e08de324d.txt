@@ -33,7 +33,7 @@
 66E:\GithHub\projects\Forkify App\node_modules\@lezer\common\LICENSE133474513705193709 0
 110E:\GithHub\projects\Forkify App\node_modules\@parcel\transformer-react-refresh-wrap\src\helpers\.eslintrc.json133474513708066048 0
 60E:\GithHub\projects\Forkify App\forkify-flowchart-part-1.png133132593124400362 0
-36E:\GithHub\projects\Forkify App\dist133474550113981066 1
+36E:\GithHub\projects\Forkify App\dist133474950133592853 1
 83E:\GithHub\projects\Forkify App\node_modules\entities\lib\decode_codepoint.d.ts.map133474513709542089 0
 71E:\GithHub\projects\Forkify App\forkify-architecture-recipe-loading.png133132593124380083 0
 100E:\GithHub\projects\Forkify App\node_modules\@swc\helpers\_\_class_private_field_update\package.json133474513717091883 0
@@ -203,7 +203,7 @@
 68E:\GithHub\projects\Forkify App\node_modules\mdn-data\css\types.json133474513711287410 0
 63E:\GithHub\projects\Forkify App\node_modules\fill-range\LICENSE133474506238031403 0
 60E:\GithHub\projects\Forkify App\node_modules\posthtml-render133474513707048841 1
-52E:\GithHub\projects\Forkify App\src\js\controller.js133474550113700762 0
+52E:\GithHub\projects\Forkify App\src\js\controller.js133474950133263736 0
 74E:\GithHub\projects\Forkify App\node_modules\sass\types\legacy\render.d.ts133474526574054653 0
 76E:\GithHub\projects\Forkify App\node_modules\caniuse-lite\data\regions\GW.js133474513718617803 0
 77E:\GithHub\projects\Forkify App\node_modules\postcss-value-parser\lib\unit.js133474513707148480 0
@@ -5995,8 +5995,8 @@
 58E:\GithHub\projects\Forkify App\node_modules\.bin\svgo.ps1133474519311594201 0
 64E:\GithHub\projects\Forkify App\dist\Forkify App.3464ddca.js.map133474527159026014 0
 54E:\GithHub\projects\Forkify App\dist\index.62406edb.js133474527159085849 0
-54E:\GithHub\projects\Forkify App\dist\index.e37f48ea.js133474550113951173 0
-58E:\GithHub\projects\Forkify App\dist\index.e37f48ea.js.map133474550113981066 0
+54E:\GithHub\projects\Forkify App\dist\index.e37f48ea.js133474950133552957 0
+58E:\GithHub\projects\Forkify App\dist\index.e37f48ea.js.map133474950133582884 0
 55E:\GithHub\projects\Forkify App\dist\index.f7626f62.css133474543222407316 0
 59E:\GithHub\projects\Forkify App\dist\index.f7626f62.css.map133474543222517332 0
 54E:\GithHub\projects\Forkify App\dist\logo.726d37a8.png133474543222467181 0
