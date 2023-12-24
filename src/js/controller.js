@@ -3,8 +3,8 @@
 import icons from 'url:../img/icons.svg'; // Parcel 2
 console.log(icons);
 
-// import 'core-js/stable';
-// import 'regenerator-runtime/runtime';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 const recipeContainer = document.querySelector('.recipe');
 
@@ -20,7 +20,7 @@ const timeout = function (s) {
 
 ///////////////////////////////////////
 
-const renderSpinner = function(parentElement) {
+const renderSpinner = function (parentElement) {
   const markup = `
     <div class="spinner">
       <svg>
@@ -115,7 +115,7 @@ const showRecipe = async function () {
       <ul class="recipe__ingredient-list">
 
         ${recipe.ingredients.map(ingredient => {
-          return `
+      return `
           <li class="recipe__ingredient">
             <svg class="recipe__icon">
               <use href="src/img/icons.svg#icon-check"></use>
@@ -127,7 +127,7 @@ const showRecipe = async function () {
             </div>
           </li>
           `;
-        }).join(' ')};
+    }).join(' ')};
         
       </ul>
     </div>
