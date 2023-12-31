@@ -6,38 +6,39 @@ import { Fraction } from "fractional";
 // console.log(Fraction);
 
 class RecipeView {
-    #parentElement = document.querySelector('.recipe');
-    #data;
+  #parentElement = document.querySelector('.recipe');
+  #data;
 
-    render(data) {
-        this.#data = data;
-        const markup = this.#generateMarkup();
-        // get rid of the old HTML (static one)
-        this.#clear;
-        // insert new HTML (dynamic one)
-        this.#parentElement.insertAdjacentHTML('afterbegin', markup);
-    }
+  render(data) {
+    this.#data = data;
+    const markup = this.#generateMarkup();
+    // get rid of the old HTML (static one)
+    this.#clear();
+    // insert new HTML (dynamic one)
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
 
-    #clear() {
-        this.#parentElement.innerHTML = '';
-    }
+  #clear() {
+    this.#parentElement.innerHTML = '';
+  }
 
-    renderSpinner = function () {
-        const markup = `
+  renderSpinner = function () {
+    const markup = `
           <div class="spinner">
             <svg>
               <use href="${icons}#icon-loader"></use>
             </svg>
           </div>
         `
-        // setting innerHTML into nothing
-        this.#parentElement.innerHTML = '';
-        // setting the spinner to see it while loading
-        this.#parentElement.insertAdjacentHTML('afterbegin', markup);
-    }
+    // // setting innerHTML into nothing
+    this.#parentElement.innerHTML = '';
+    // this.#clear();
+    // setting the spinner to see it while loading
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
 
-    #generateMarkup() {
-        return `
+  #generateMarkup() {
+    return `
         <figure class="recipe__fig">
           <img src="${this.#data.img}" alt="Tomato" class="recipe__img" />
           <h1 class="recipe__title">
@@ -114,10 +115,10 @@ class RecipeView {
           </a>
         </div>
         `;
-    }
+  }
 
-    #generateIngredients(ingredient) {
-        return `
+  #generateIngredients(ingredient) {
+    return `
               <li class="recipe__ingredient">
                 <svg class="recipe__icon">
                   <use href="src/img/icons.svg#icon-check"></use>
@@ -129,7 +130,7 @@ class RecipeView {
                 </div>
               </li>
               `;
-    }
+  }
 }
 
 export default new RecipeView();
