@@ -27,7 +27,7 @@ const controlRecipes = async function () {
     // using guard
     if (!id) return;
 
-    recipeView.renderSpinner(recipeContainer);
+    recipeView.renderSpinner();
 
     // 1) loading the recipe
     await model.loadRecipe(id);
@@ -36,10 +36,8 @@ const controlRecipes = async function () {
     // 2) Rendering recipe
     recipeView.render(model.state.recipe);
 
-
-
   } catch (error) {
-    console.error(error);
+    recipeView.renderError();
   }
 };
 

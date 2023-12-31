@@ -597,14 +597,14 @@ const controlRecipes = async function() {
         // console.log(id);
         // using guard
         if (!id) return;
-        (0, _recipeViewJsDefault.default).renderSpinner(recipeContainer);
+        (0, _recipeViewJsDefault.default).renderSpinner();
         // 1) loading the recipe
         await _modelJs.loadRecipe(id);
         // const { recipe } = model.state;
         // 2) Rendering recipe
         (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
     } catch (error) {
-        console.error(error);
+        (0, _recipeViewJsDefault.default).renderError();
     }
 };
 const init = function() {
@@ -2480,6 +2480,8 @@ parcelHelpers.export(exports, "loadRecipe", ()=>loadRecipe);
 var _regeneratorRuntime = require("regenerator-runtime");
 var _configJs = require("./config.js");
 var _helpersJs = require("./helpers.js");
+var _recipeViewJs = require("./views/recipeView.js");
+var _recipeViewJsDefault = parcelHelpers.interopDefault(_recipeViewJs);
 const state = {
     recipe: {}
 };
@@ -2500,11 +2502,12 @@ const loadRecipe = async function(id) {
         };
     // console.log(state.recipe);
     } catch (error) {
-        console.error(error);
+        // console.error(error);
+        throw error;
     }
 };
 
-},{"regenerator-runtime":"dXNgZ","./config.js":"k5Hzs","./helpers.js":"hGI1E","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"k5Hzs":[function(require,module,exports) {
+},{"regenerator-runtime":"dXNgZ","./config.js":"k5Hzs","./helpers.js":"hGI1E","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/recipeView.js":"l60JC"}],"k5Hzs":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "API_URL", ()=>API_URL);
@@ -2554,6 +2557,8 @@ var _fractional = require("fractional");
 class RecipeView {
     #parentElement = document.querySelector(".recipe");
     #data;
+    #errorMsg = "We could not find that recipe. Please try again!";
+    #successMsg = "";
     render(data) {
         this.#data = data;
         const markup = this.#generateMarkup();
@@ -2574,10 +2579,42 @@ class RecipeView {
           </div>
         `;
         // // setting innerHTML into nothing
-        this.#parentElement.innerHTML = "";
+        this.#clear();
         // setting the spinner to see it while loading
         this.#parentElement.insertAdjacentHTML("afterbegin", markup);
     };
+    renderError(msg = this.#errorMsg) {
+        const markup = `
+          <div class="error">
+            <div>
+              <svg>
+                <use href="${(0, _iconsSvgDefault.default)}#icon-alert-triangle"></use>
+              </svg>
+            </div>
+            <p>${msg}</p>
+          </div>
+          `;
+        // // setting innerHTML into nothing
+        this.#clear();
+        // setting the spinner to see it while loading
+        this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
+    renderMsg(msg = this.#successMsg) {
+        const markup = `
+          <div class="message">
+            <div>
+              <svg>
+                <use href="${(0, _iconsSvgDefault.default)}#icon-smile"></use>
+              </svg>
+            </div>
+            <p>${msg}</p>
+          </div>
+          `;
+        // // setting innerHTML into nothing
+        this.#clear();
+        // setting the spinner to see it while loading
+        this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
     addHandlerRender(handler) {
         [
             "hashchange",
