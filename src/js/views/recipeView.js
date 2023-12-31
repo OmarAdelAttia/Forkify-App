@@ -32,9 +32,14 @@ class RecipeView {
         `
     // // setting innerHTML into nothing
     this.#parentElement.innerHTML = '';
-    // this.#clear();
     // setting the spinner to see it while loading
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  addHandlerRender(handler) {
+    ['hashchange', 'load'].forEach(event => window.addEventListener(event, handler));
+    // window.addEventListener('hashchange', controlRecipes);
+    // window.addEventListener('load', controlRecipes);
   }
 
   #generateMarkup() {

@@ -576,8 +576,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"aenu9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _webImmediateJs = require("core-js/modules/web.immediate.js"); // window.addEventListener('hashchange', controlRecipes);
- // window.addEventListener('load', controlRecipes);
+var _webImmediateJs = require("core-js/modules/web.immediate.js");
 var _modelJs = require("./model.js");
 var _recipeViewJs = require("./views/recipeView.js");
 var _recipeViewJsDefault = parcelHelpers.interopDefault(_recipeViewJs);
@@ -605,13 +604,13 @@ const controlRecipes = async function() {
         // 2) Rendering recipe
         (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
     } catch (error) {
-        alert(error);
+        console.error(error);
     }
 };
-[
-    "hashchange",
-    "load"
-].forEach((event)=>window.addEventListener(event, controlRecipes));
+const init = function() {
+    (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipes);
+};
+init();
 
 },{"core-js/modules/web.immediate.js":"49tUX","regenerator-runtime/runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./model.js":"Y4A21","./views/recipeView.js":"l60JC"}],"49tUX":[function(require,module,exports) {
 "use strict";
@@ -2505,7 +2504,7 @@ const loadRecipe = async function(id) {
     }
 };
 
-},{"regenerator-runtime":"dXNgZ","./config.js":"k5Hzs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./helpers.js":"hGI1E"}],"k5Hzs":[function(require,module,exports) {
+},{"regenerator-runtime":"dXNgZ","./config.js":"k5Hzs","./helpers.js":"hGI1E","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"k5Hzs":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "API_URL", ()=>API_URL);
@@ -2543,7 +2542,7 @@ const getJSON = async function(url) {
     }
 };
 
-},{"regenerator-runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./config.js":"k5Hzs"}],"l60JC":[function(require,module,exports) {
+},{"regenerator-runtime":"dXNgZ","./config.js":"k5Hzs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l60JC":[function(require,module,exports) {
 // get the icons since we are using Parcel and it takes the icons from the dist
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -2576,10 +2575,17 @@ class RecipeView {
         `;
         // // setting innerHTML into nothing
         this.#parentElement.innerHTML = "";
-        // this.#clear();
         // setting the spinner to see it while loading
         this.#parentElement.insertAdjacentHTML("afterbegin", markup);
     };
+    addHandlerRender(handler) {
+        [
+            "hashchange",
+            "load"
+        ].forEach((event)=>window.addEventListener(event, handler));
+    // window.addEventListener('hashchange', controlRecipes);
+    // window.addEventListener('load', controlRecipes);
+    }
     #generateMarkup() {
         return `
         <figure class="recipe__fig">
