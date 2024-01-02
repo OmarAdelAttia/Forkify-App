@@ -45,15 +45,15 @@ const controlSearchResults = async function () {
     // 2) Load search results
     await model.loadSearchResults(query);
 
-    // 3) Render results
-    resultsView.render(model.state.search.results);
+    // // 3) Render all results
+    // resultsView.render(model.state.search.results);
+    // 3) Render results with pagination
+    resultsView.render(model.getSearchResultsPage());
     // console.log(model.state.search.results);
   } catch (error) {
     console.error(`Error from controller.js in controlSearchResults function => ${error}`);
   }
 }
-
-controlSearchResults();
 
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
