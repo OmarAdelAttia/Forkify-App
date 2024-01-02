@@ -5,6 +5,10 @@ import recipeView from './views/recipeView.js';
 
 export const state = {
     recipe: {},
+    search: {
+        query: '',
+        results: []
+    },
 };
 
 export const loadRecipe = async function (id) {
@@ -25,7 +29,27 @@ export const loadRecipe = async function (id) {
         };
         // console.log(state.recipe);
     } catch (error) {
-        // console.error(error);
+        console.error(`Error from model.js in loadRecipe function => ${error}`);
+        throw error;
+    }
+}
+
+export const loadSearchResults = async function (params) {
+    try {
+        state.search.query = params;
+        const data = await getJSON(`${API_URL}?search=${params}`);
+        // console.log(data);
+        state.search.results = data.data.recipes.map(recipe => {
+            return {
+                id: recipe.id,
+                title: recipe.title,
+                img: recipe.image_url,
+                publisher: recipe.publisher,
+            }
+        });
+        // console.log(state.search.results);
+    } catch (error) {
+        console.error(`Error from model.js in loadSearchResults function => ${error}`);
         throw error;
     }
 }
