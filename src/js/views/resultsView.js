@@ -6,10 +6,10 @@ class ResultsView extends View {
     _parentElement = document.querySelector('.results');
     _errorMsg = 'No recipes found for your query! Please try again ;)';
     _successMsg = '';
-    
+
     _generateMarkup() {
-        console.log(this._data);
-        return this._data.map(this._generateMarkupPreview()). join('');
+        // console.log(this._data);
+        return this._data.map(this._generateMarkupPreview).join('');
     }
 
     _generateMarkupPreview(result) {
