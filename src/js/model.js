@@ -34,7 +34,7 @@ export const loadRecipe = async function (id) {
         console.error(`Error from model.js in loadRecipe function => ${error}`);
         throw error;
     }
-}
+};
 
 export const loadSearchResults = async function (params) {
     try {
@@ -54,7 +54,7 @@ export const loadSearchResults = async function (params) {
         console.error(`Error from model.js in loadSearchResults function => ${error}`);
         throw error;
     }
-}
+};
 
 
 export const getSearchResultsPage = function (page = state.search.page) {
@@ -64,4 +64,12 @@ export const getSearchResultsPage = function (page = state.search.page) {
     const end = page * state.search.resultsPerPage; // 9
 
     return state.search.results.slice(start, end);
-}
+};
+
+export const updateServings = function (newServings) {
+    state.recipe.ingredients.forEach(ingredient => {
+        // newQt = oldQt * newServings / old servings
+        ingredient.quantity = ingredient.quantity * newServings / state.recipe.servings;
+    });
+    state.recipe.servings = newServings;
+};
